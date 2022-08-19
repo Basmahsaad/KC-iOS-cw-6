@@ -1,14 +1,14 @@
 //
-//  cw5App.swift
-//  cw5
+//  CW6App.swift
+//  CW6
 //
-//  Created by ... on 23/06/2022.
+//  Created by basmah saad on 17/08/2022.
 //
 
 import SwiftUI
 
 @main
-struct cw5App: App {
+struct CW6App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
