@@ -14,38 +14,26 @@ struct ContentView: View {
             Image("photo12")
                 .resizable()
                 .ignoresSafeArea()
-                
-            VStack {
+            VStack{
             HStack{
                 Image(systemName:"book.fill")
+                    
                 Spacer()
                 Image(systemName:"chevron.right")
+                    
             }.padding()
-                    .background(Color.white.opacity(0.3))
-                Spacer()
-            }.foregroundColor(Color.white)
-                            
-            
-            VStack{
-                HStack{
-                    Text("أستغفِرُالله العَظيم")
-                        .font(.callout)
-                    Spacer()
-                    Text("\(counter[0])")
-                        .font(.callout)
-                        .frame(width: 60, height: 60,alignment: .center)
-                        .background(Color.white.opacity(2))
-                        .clipShape(Circle())
-                        .padding()
-                    onTapGesture {
-                        counter[0] = counter[0] + 1
-                    }
-                }
+            .background(Color.white.opacity(0.3))
+            Spacer()
             }.foregroundColor(Color.white)
             
+            VStack {
+                RowView(myCounter: $counter[0], title: "أستغفِرُالله")
+                RowView(myCounter: $counter[1], title: "الحمدُلله")
+                RowView(myCounter: $counter[2], title: "سبحان الله")
+           
+            }.foregroundColor(Color.white)
             
-          //
-            
+   //
         }
         
     }
@@ -56,5 +44,26 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct RowView: View {
+    @Binding var myCounter : Int
+    @State var title: String
+    var body: some View {
+        HStack{
+            Text(title)
+                .font(.body.bold())
+            Spacer()
+            Text("\(myCounter)")
+                .font(.largeTitle)
+                .frame(width: 80, height: 80,alignment: .center)
+                .background(Color.clear)
+                .clipShape(Circle())
+                .padding()
+                .onTapGesture {
+              myCounter = myCounter + 1
+            }
+        }.padding()
     }
 }
